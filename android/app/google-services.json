@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "372789229095",
+    "project_id": "chat-app-fri-c7",
+    "storage_bucket": "chat-app-fri-c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372789229095:android:640a89f78571e37da88002",
+        "android_client_info": {
+          "package_name": "com.example.flutter_chat_app_alex_c7_fri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372789229095-31b803kiq1hml0uk0021e69h0p82rggm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWPhk5gNJlzr7-5yGwCpA8EPsOVAyFjUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372789229095-31b803kiq1hml0uk0021e69h0p82rggm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
