@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app_alex_c7_fri/model/my_user.dart';
+import 'package:flutter_chat_app_alex_c7_fri/provider/user_provider.dart';
 import 'package:flutter_chat_app_alex_c7_fri/ui/home/home_screen.dart';
 import 'package:flutter_chat_app_alex_c7_fri/ui/register/register_navigator.dart';
 import 'package:flutter_chat_app_alex_c7_fri/ui/register/register_view_model.dart';
@@ -162,8 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> implements RegisterNavi
   void validateForm() async {
     if (formKey.currentState?.validate() == true) {
       // register
-      viewModel.registerFirebaseAuth(email, password);
-
+      viewModel.registerFirebaseAuth(email, password,firstName,lastName,userName);
     }
   }
 
@@ -181,7 +184,15 @@ class _RegisterScreenState extends State<RegisterScreen> implements RegisterNavi
   void showMessage(String message) {
     Utils.showMessage(message, context,
         'Ok', (context){
-      Navigator.of(context).pushNamed(HomeScreen.routeName);
+      Navigator.pop(context);
         });
+  }
+  @override
+  void navigateToHome(MyUser user) {
+  var userProvider = Provider.of<UserProvider>(context, listen: false);
+  userProvider.user = user ;
+  Timer(Duration(seconds: 5),() {
+    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+  },);
   }
 }

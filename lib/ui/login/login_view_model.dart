@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app_alex_c7_fri/database/database_utils.dart';
 import 'package:flutter_chat_app_alex_c7_fri/firebase_errors.dart';
 import 'package:flutter_chat_app_alex_c7_fri/ui/login/login_navigator.dart';
 
@@ -13,11 +14,19 @@ class LoginViewModel extends ChangeNotifier{
           email: email,
           password: password
       );
-      // hide loading
       navigator.hideLoading();
-      // show message
       navigator.showMessage('Login successfully');
-      print('id: ${result.user?.uid}');
+      // show message
+      // retrieve data
+      var userObj = await DatabaseUtils.getUser(result.user?.uid ?? '');
+      if(userObj == null){
+        navigator.hideLoading();
+        navigator.showMessage('Register failed please try again');
+      }else{
+        navigator.navigateToHome(userObj);
+      }
+
+
     } on FirebaseAuthException catch (e) {
       if (e.code == FirebaseErrors.userNotFound) {
         // hide loading
